@@ -18,6 +18,59 @@ describe('Controller: select group', function () {
     });
   });
 
+  describe('Get min members', function () {
+    it('should return an array with 2011', function () {
+      var groups = [
+        {
+            id: '1009',
+            group: 1
+        }, {
+            id: '2011',
+            group: 1
+        }, {
+            id: '1017',
+            group: 2
+        }, {
+            id: '2011',
+            group: 2
+        }
+      ];
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['2011']);
+    });
+    it('should return an array with 1009, 2002', function () {
+      var groups = [
+        {
+            id: '1009',
+            group: 1
+        }, {
+            id: '2000',
+            group: 1
+        }, {
+            id: '1009',
+            group: 2
+        }, {
+            id: '2001',
+            group: 2
+        }, {
+            id: '1002',
+            group: 3
+        }, {
+            id: '2002',
+            group: 3
+        }, {
+            id: '1003',
+            group: 4
+        }, {
+            id: '2002',
+            group: 4
+        }
+      ];
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['1009','2002']);
+    });
+  });
+
   describe('when going to /group', function () {
 
     var route, location, rootScope, httpBackend;

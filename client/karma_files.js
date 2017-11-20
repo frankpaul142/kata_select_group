@@ -1,4 +1,5 @@
 module.exports = [
+  'app/bower_components/underscore/underscore.js',
   'app/bower_components/jquery/jquery.js',
   'app/bower_components/jquery-ui/ui/jquery-ui.js',
   'app/bower_components/angular/angular.js',

@@ -1,14 +1,19 @@
 <h3>Group</h3>
 <br>
-<div>
+<div class='container'>
 	<h4>Seleccione la Cantidad de Grupos</h4>
-	<input id='quantity_teams' type='number' value='1' />
+	<input id='quantity_teams' ng-model='quantity_teams' type='number' value='1' />
+	<button ng-click="asign()">Asignar</button>
 	<br>
 	<h4>Ingrese los Ids</h4>
-	<label>Estocolmo</label>
-	<input class='estocolmo' type='number' value='1' />
-	<label>Londres</label>
-	<input class='londres' type='number' value='1' />
-
+	<div class='row'>
+		<div class="col-sm-4">Estocolmo</div>
+		<div class="col-sm-4">Londres</div>
+	</div>
+	<div id='inputs' class='row'>
+	</div>
+	<div  class='row'>
+		<button ng-click="createArray()">Calcular</button>
+	</div>
   <br><a href="#/" class="kataFont">Home</a>
 </div>

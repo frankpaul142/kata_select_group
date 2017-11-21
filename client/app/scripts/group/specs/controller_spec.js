@@ -35,6 +35,7 @@ describe('Controller: select group', function () {
             group: 2
         }
       ];
+
       var result=scope.getMembers(groups);
       expect(result).toEqual(['2011']);
     });

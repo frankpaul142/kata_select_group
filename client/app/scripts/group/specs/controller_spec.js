@@ -17,13 +17,15 @@ describe('Controller: select group', function () {
       expect(scope.controller_loaded).toContain('loaded');
     });
   });
+
   describe('asign function', function () {
     it('scope.inputs length should be 10', function () {
       scope.quantity_teams=5;
       scope.asign();
-      expect(scope.inputs.length).toEqual(10);
+      expect(scope.inputs.length).toBe(10);
     });
   });
+
   describe('Get min members', function () {
     it('should return an array with 2011', function () {
       var groups = [
@@ -34,6 +36,7 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['2011']);
     });
+
     it('should return an array with 1009', function () {
       var groups = [
         {id: '1009', group: 1}, {id: '2011', group: 1},
@@ -43,6 +46,7 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1009']);
     });
+
     it('should return an array with 1003,1004', function () {
       var groups = [
         {id: '1003', group: 1}, {id: '2011', group: 1},
@@ -52,6 +56,7 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1003','1004']);
     });
+
     it('should return an array with 1009, 2002', function () {
       var groups = [
         { id: '1009', group: 1}, { id: '2000', group: 1},
@@ -63,6 +68,7 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1009','2002']);
     });
+
     it('should return an array with 1002, 2002, 2003', function () {
       var groups = [
         { id: '1000', group: 1}, { id: '2002', group: 1},
@@ -75,6 +81,32 @@ describe('Controller: select group', function () {
       
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1002','2002','2003']);
+    });
+
+    it('should return an array with 1002, 2002, 2003', function () {
+      var groups = [
+        { id: '1001', group: 1}, { id: '2002', group: 1},
+        { id: '1001', group: 2}, { id: '2001', group: 2},
+        { id: '1002', group: 3}, { id: '2001', group: 3},
+        { id: '1002', group: 4}, { id: '2003', group: 4},
+        { id: '1003', group: 5}, { id: '2003', group: 5},
+        { id: '1003', group: 6}, { id: '2002', group: 6}
+      ];
+      
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['1001','1002','1003']);
+    });
+    it('should return an array with 2012,2013,2014', function () {
+      var groups = [
+        { id: '1001', group: 1}, { id: '2012', group: 1},
+        { id: '1002', group: 2}, { id: '2012', group: 2},
+        { id: '1002', group: 3}, { id: '2013', group: 3},
+        { id: '1004', group: 4}, { id: '2013', group: 4},
+        { id: '1003', group: 5}, { id: '2014', group: 5},
+      ];
+      
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['1003','2012','2013']);
     });
   });
 

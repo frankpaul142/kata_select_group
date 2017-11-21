@@ -7,13 +7,17 @@
 	<br>
 	<h4>Ingrese los Ids</h4>
 	<div class='row'>
-		<div class="col-sm-4">Estocolmo</div>
-		<div class="col-sm-4">Londres</div>
-	</div>
-	<div id='inputs' class='row'>
+		<div class="col-xs-6">Estocolmo</div>
+		<div class="col-xs-6">Londres</div>
 	</div>
 	<div  class='row'>
-		<button ng-click="createArray()">Calcular</button>
+		<div class="col-xs-6" data-ng-repeat="input in inputs">
+			<div ><input type="text" ng-model="input.id" id="" placeholder="Enter id"></div>
+		</div>
+	</div>
+		{{ result }}
+	<div  class='row'>
+		<button ng-click="calculate()">Calcular</button>
 	</div>
   <br><a href="#/" class="kataFont">Home</a>
 </div>

@@ -24,6 +24,7 @@ angular.module('Group')
 			});
 			return result.slice(0,Object.keys(groupedByCount).length/2);
 		}
+
 		if(all_equals && groups.length === Object.keys(groupedByCount).length){
 			_.each(grouped, function(value){ 
 					result.push(value[0].id);			
@@ -37,7 +38,9 @@ angular.module('Group')
 		if(value>1){
 			return key;
 		} 
+		
 		});
+
 		result=_.without(result,undefined);
 		_.each(grouped, function(value){ 
 			if(_.contains(result, value[0].id) || _.contains(result, value[1].id)){
@@ -45,14 +48,17 @@ angular.module('Group')
 			}
 			result.push(value[0].id);				
 		});
+
 		result = _.sortBy(result, function(num) {
 		return num;
 		});
+
 		_.each(grouped, function(value,key){
 			if(_.contains(result, value[0].id) && _.contains(result, value[1].id)){
 				to_commute.push(key);
 			}
 		});
+
 		_.each(to_commute, function(value){
 			estocolmo_repeated.push(grouped[value][0].id);
 			londres_repeated.push(grouped[value][1].id);

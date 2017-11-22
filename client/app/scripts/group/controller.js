@@ -6,9 +6,9 @@ angular.module('Group')
 	$scope.inputs=[];
 	$scope.result='';
 	var result=[];
-	var aux=[];
-	var aux2=[];
-	var aux3=[];
+	var to_commute=[];
+	var estocolmo_repeated=[];
+	var londres_repeated=[];
 	$scope.getMembers=function(groups){
 		var groupedByCount = _.countBy(groups, function (item) {
 			return item.id;
@@ -50,18 +50,18 @@ angular.module('Group')
 		});
 		_.each(grouped, function(value,key){
 			if(_.contains(result, value[0].id) && _.contains(result, value[1].id)){
-				aux.push(key);
+				to_commute.push(key);
 			}
 		});
-		_.each(aux, function(value){
-			aux2.push(grouped[value][0].id);
-			aux3.push(grouped[value][1].id);
+		_.each(to_commute, function(value){
+			estocolmo_repeated.push(grouped[value][0].id);
+			londres_repeated.push(grouped[value][1].id);
 		});
-		if(!!_.reduce(aux2,function(a, b){ return (a === b) ? a : NaN; })){
-			result = _.without(result,aux2[0]);
+		if(!!_.reduce(estocolmo_repeated,function(a, b){ return (a === b) ? a : NaN; })){
+			result = _.without(result,estocolmo_repeated[0]);
 		}
-		if(!!_.reduce(aux3,function(a, b){ return (a === b) ? a : NaN; })){
-			result = _.without(result,aux3[0]);
+		if(!!_.reduce(londres_repeated,function(a, b){ return (a === b) ? a : NaN; })){
+			result = _.without(result,londres_repeated[0]);
 		}
 		return result;
 	};

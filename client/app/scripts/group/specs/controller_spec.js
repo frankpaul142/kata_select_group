@@ -83,7 +83,7 @@ describe('Controller: select group', function () {
       expect(result).toEqual(['1002','2002','2003']);
     });
 
-    it('should return an array with 1002, 2002, 2003', function () {
+    it('should return an array with 1001, 1002, 1003', function () {
       var groups = [
         { id: '1001', group: 1}, { id: '2002', group: 1},
         { id: '1001', group: 2}, { id: '2001', group: 2},
@@ -96,7 +96,7 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1001','1002','1003']);
     });
-    it('should return an array with 2012,2013,2014', function () {
+    it('should return an array with 1003,2012,2013', function () {
       var groups = [
         { id: '1001', group: 1}, { id: '2012', group: 1},
         { id: '1002', group: 2}, { id: '2012', group: 2},
@@ -108,6 +108,37 @@ describe('Controller: select group', function () {
       var result=scope.getMembers(groups);
       expect(result).toEqual(['1003','2012','2013']);
     });
+
+    it('should return an array with 1002,1003,1004', function () {
+      var groups = [
+        { id: '1002', group: 1}, { id: '2011', group: 1},
+        { id: '1002', group: 2}, { id: '2012', group: 2},
+        { id: '1003', group: 3}, { id: '2012', group: 3},
+        { id: '1003', group: 4}, { id: '2014', group: 4},
+        { id: '1004', group: 5}, { id: '2013', group: 5},
+      ];
+      
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['1002','1003','1004']);
+    });
+
+    xit('should return an array with 1005,1006,2012,2013', function () {
+      var groups = [
+        { id: '1001', group: 1}, { id: '2012', group: 1},
+        { id: '1002', group: 2}, { id: '2012', group: 2},
+        { id: '1002', group: 3}, { id: '2013', group: 3},
+        { id: '1004', group: 4}, { id: '2013', group: 4},
+        { id: '1005', group: 5}, { id: '2001', group: 5},
+        { id: '1005', group: 6}, { id: '2002', group: 6},
+        { id: '1006', group: 7}, { id: '2002', group: 7},
+        { id: '1006', group: 8}, { id: '2004', group: 8},
+      ];
+      
+      var result=scope.getMembers(groups);
+      expect(result).toEqual(['1005', '1006', '2012','2013']);
+    });
+
+
   });
 
   describe('Calculate', function () {
